@@ -1,0 +1,27 @@
+@startuml
+package "Diagrama de Componentes - Tuberia y Filtro" {
+ 
+
+component Producer
+component eliminarDatosDuplicadosPrimerFiltro
+component eliminarClientesNulosYYYeliminarVentasEquivalenteACero
+component ventasFallidasMapeo
+component VentasRealizadasMapeo
+component salidaVentasRealizadas
+component salidaVentasFallidas
+
+
+Producer -> eliminarDatosDuplicadosPrimerFiltro
+eliminarDatosDuplicadosPrimerFiltro-> eliminarClientesNulosYYYeliminarVentasEquivalenteACero
+eliminarDatosDuplicadosPrimerFiltro--> ventasFallidasMapeo
+ventasFallidasMapeo -> salidaVentasFallidas
+eliminarClientesNulosYYYeliminarVentasEquivalenteACero -> VentasRealizadasMapeo
+VentasRealizadasMapeo-> salidaVentasRealizadas
+
+note left of Producer : Se ingresa un excel en formato .xlsx
+note top  of eliminarDatosDuplicadosPrimerFiltro : Este es el primer filtro para eliminar datosDuplicados
+
+note right of salidaVentasFallidas : Se ingresa un excel en formato .xlsx
+note right of salidaVentasRealizadas : Ventas listas para ingresar a BD.
+}
+@enduml
